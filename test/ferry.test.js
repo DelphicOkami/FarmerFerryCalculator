@@ -1,0 +1,37 @@
+class Ferry {
+  getCost(numOfBags) {
+    if(!Number.isInteger(numOfBags)){
+      return 'must be a positive whole number'
+    }
+    if(numOfBags < 1) return 0.00
+    else {
+        return 0.25 * ((2 * numOfBags) - 1)
+    }
+  }
+} 
+
+describe("Given n bags, what is the cost? (assuming each ferry ride costs £0.25 and knowing the farmer does not want to return unnecessarily)",
+() => {
+  f = new Ferry();
+  it("will return 0 for -1 bags", () => {
+    expect(f.getCost(-1)).toEqual(0)
+  });
+  it("will return 0.00 for 0 bags", () => {
+    expect(f.getCost(0)).toEqual(0)
+  });
+  it("will return 0.25 for 1 bag", () => {
+    expect(f.getCost(1)).toEqual(0.25)
+  });
+  it("will return 0.75 for 2 bags", () => {
+    expect(f.getCost(2)).toEqual(0.75)
+  });
+  it("will return 1.25 for 3 bags", () => {
+    expect(f.getCost(3)).toEqual(1.25)
+  });
+  it("will return 'must be a positive whole number' for 2.5 bags", () => {
+    expect(f.getCost(2.5)).toEqual('must be a positive whole number') 
+  });
+  it("will return 'must be a positive whole number' for 'Dave'", () => {
+    expect(f.getCost('Dave')).toEqual('must be a positive whole number') 
+  });
+});
