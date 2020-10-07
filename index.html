@@ -28,7 +28,7 @@
     <div class="header">
       <h1>Ferry cost calculator v0.1.1</h1>
     </div>
-      <form oninput="result.value=((parseInt(bags.value) || 0) * ((parseFloat(cost.value) || 0) * 2))">
+      <form oninput="result.value=((Math.ceil(bags.value) || 0) * ((parseFloat(cost.value) || 0) * 2)).toFixed(2)">
         <div class="row">
           <label for="bags">Number of bags</label> <input type="number" id="bags" name="bags"/>
         </div>
