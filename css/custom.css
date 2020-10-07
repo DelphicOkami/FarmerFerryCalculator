@@ -9,7 +9,7 @@ body {
     background-color: #eeeeee;
     margin: 0 auto;
     padding: 2em;
-    background-image: url("/img/farmer.png");
+    background-image: url("../img/farmer.png");
     background-position: right;
     background-repeat: no-repeat;
     background-size: 250px 250px;
