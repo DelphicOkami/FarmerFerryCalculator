@@ -1,18 +1,8 @@
-class Ferry {
-  getCost(numOfBags) {
-    if(!Number.isInteger(numOfBags)){
-      return 'must be a positive whole number'
-    }
-    if(numOfBags < 1) return 0.00
-    else {
-        return 0.25 * ((2 * numOfBags) - 1)
-    }
-  }
-} 
+const f = require('../js/ferry')
 
 describe("Given n bags, what is the cost? (assuming each ferry ride costs £0.25 and knowing the farmer does not want to return unnecessarily)",
 () => {
-  f = new Ferry();
+
   it("will return 0 for -1 bags", () => {
     expect(f.getCost(-1)).toEqual(0)
   });
