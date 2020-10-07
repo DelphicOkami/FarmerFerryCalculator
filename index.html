@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en-GB">
 
 <head>
   <meta charset="utf-8">
@@ -12,15 +12,13 @@
   <meta property="og:url" content="">
   <meta property="og:image" content="">
 
+
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/custom.css">
-
-  <meta name="theme-color" content="#fafafa">
 </head>
 
 <body>
@@ -28,22 +26,22 @@
     <div class="header">
       <h1>Ferry cost calculator</h1>
     </div>
-      <form oninput="result.value=((Math.ceil(bags.value) || 0) * ((parseFloat(cost.value) || 0) * 2)).toFixed(2)">
-        <div class="row">
-          <label for="bags">Number of bags:</label> <input type="number" id="bags" name="bags"/>
-        </div>
-        <div class="row">
-          <label for="cost">Cost per bag (£):</label> <input type="number" id="cost" name="cost" value="0.25" />
-        </div>
-        <div class="row">
-            <label for="result">Total Cost:</label> £<output name="result" id="result"></output>
-        </div>
-      </form>
-      <p class="version">Version 0.1.2</p>
+    <form oninput="result.value=(getCost( parseInt(bags.value)))">
+      <div class="row">
+        <label for="bags">Number of bags:</label> <input type="number" id="bags" name="bags" min="0"/>
+      </div>
+      <!-- <div class="row">
+        <label for="cost">Cost per bag (£):</label> <input type="number" id="cost" name="cost" value="0.25" />
+      </div> -->
+      <div class="row">
+          <label for="result">Total Cost:</label> £<output name="result" id="result"></output>
+      </div>
+    </form>
+    <p class="version">Version 0.1.3</p>
   </div>
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/ferry.js"></script>
 </body>
 
 </html>

@@ -7,6 +7,3 @@ function getCost(numOfBags) {
     return 0.25 * ((2 * numOfBags) - 1)
   }
 }
-
-
-  module.exports = {getCost}
