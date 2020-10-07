@@ -29,10 +29,10 @@
       <h1>Ferry cost calculator</h1>
     </div>
     <div class="row">
-      <form oninput="result.value=parseInt(bags.value)+parseInt(cost.value)">
-        <label for="bags">Bags</label><input type="number" id="bags" name="bags" /><br />
-        <label for="cost">Cost per bag</label><input type="number" id="cost" name="cost" value="0.25" />
-        <output name="result" for="a b"></output>
+      <form oninput="result.value=(parseInt(bags.value) * (parseFloat(cost.value) * 2))">
+        <label for="bags">Bags</label> <input type="number" id="bags" name="bags" /><br />
+        <label for="cost">Cost per bag</label> <input type="number" id="cost" name="cost" value="0.25" /><br />
+        <label for="result">Total Cost</label> <output name="result" id="result"></output>
       </form>
     </div>
   </div>
