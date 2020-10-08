@@ -36,6 +36,12 @@ describe("Given n geese and n corn, what trips can I take?",
   it("Zero geese and one corn", () => {
     expect(getTrips(0, 1)).toEqual('corn')
   })
+  it("Zero geese and two corn", () => {
+    expect(getTrips(0, 2)).toEqual('corn, nothing, corn')
+  })
+  it("Zero geese and four corn", () => {
+    expect(getTrips(0, 4)).toEqual('corn, nothing, corn, nothing, corn, nothing, corn')
+  })
   it("One goose and zero corn", () => {
     expect(getTrips(1, 0)).toEqual('goose')
   })
@@ -45,24 +51,33 @@ describe("Given n geese and n corn, what trips can I take?",
   it("One goose and two corn", () => {
     expect(getTrips(1, 2)).toEqual('goose, nothing, corn, goose, corn, nothing, goose')
   })
+  it("One goose and three corn", () => {
+    expect(getTrips(1, 3)).toEqual('Cannot complete without loosing corn')
+  })
   it("two goose and one corn", () => {
     expect(getTrips(2, 1)).toEqual('corn, nothing, goose, corn, goose, nothing, corn')
   })
   it("two goose and one corn", () => {
     expect(getTrips(2, 2)).toEqual('Cannot complete without loosing corn')
   })
-  it("One goose and three corn", () => {
-    expect(getTrips(1, 3)).toEqual('Cannot complete without loosing corn')
-  })
 })
 
 function getTrips(geese, corn){
   if(geese < 0 || corn < 0) return 'Values cannot be less than zero'
+  if(geese == 0) {
+    var returnString = ''
+    for(var i = 0; i < corn; i++) {
+      if (returnString.length > 0) {
+        returnString += ', nothing, '
+      }
+      returnString += 'corn'
+    }
+    return returnString
+  }
   if(geese == 1 && corn == 0) return 'goose'
   if(geese == 1 && corn == 1) return 'goose, nothing, corn'
   if(geese == 1 && corn == 2) return 'goose, nothing, corn, goose, corn, nothing, goose'
   if(geese == 1 && corn == 3) return 'Cannot complete without loosing corn'
-  if(geese == 0 && corn == 1) return 'corn'
   if(geese == 2 && corn == 1) return 'corn, nothing, goose, corn, goose, nothing, corn'
   if((geese + corn) >= 4) return 'Cannot complete without loosing corn'
 }
