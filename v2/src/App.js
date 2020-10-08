@@ -1,26 +1,32 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {getCost, getTrips} from './ferry'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <FerryForm />
+      <TripsAnswer geese={1} corn={2}/>    
+      </div>
   );
 }
+
+const TripsAnswer = ({geese, corn}) => {
+  return <div>
+<div>
+  <span>list of trips:</span>
+  {getTrips(geese, corn)}
+</div>
+  </div>
+} 
+
+const FerryForm = () => {
+  return <div>
+    <label for="geese">Number of geese:</label> <input type="number" id="geese" name="geese" min="0"/>
+    <label for="corn">Number of bags of corn:</label> <input type="number" id="corn" name="corn" min="0"/>
+  </div>
+}
+
 
 export default App;
