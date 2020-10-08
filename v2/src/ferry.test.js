@@ -33,6 +33,9 @@ describe("Given n geese and n corn, what trips can I take?",
   it("Zero geese and minus one corn", () => {
     expect(getTrips(0, -1)).toEqual('Values cannot be less than zero')
   })
+  it("Zero geese and zero corn", () => {
+    expect(getTrips(0, 0)).toEqual('No trips required')
+  })
   it("Zero geese and one corn", () => {
     expect(getTrips(0, 1)).toEqual('corn')
   })
@@ -60,10 +63,14 @@ describe("Given n geese and n corn, what trips can I take?",
   it("two goose and one corn", () => {
     expect(getTrips(2, 2)).toEqual('Cannot complete without loosing corn')
   })
+  it("Four goose and zero corn", () => {
+    expect(getTrips(4, 0)).toEqual('goose, nothing, goose, nothing, goose, nothing, goose')
+  })
 })
 
 function getTrips(geese, corn){
   if(geese < 0 || corn < 0) return 'Values cannot be less than zero'
+  if(geese == 0 && corn == 0) return 'No trips required'
   if(geese == 0) {
     var returnString = ''
     for(var i = 0; i < corn; i++) {
@@ -74,10 +81,18 @@ function getTrips(geese, corn){
     }
     return returnString
   }
-  if(geese == 1 && corn == 0) return 'goose'
+  if(corn == 0) {
+    var returnString = ''
+    for(var i = 0; i < geese; i++) {
+      if (returnString.length > 0) {
+        returnString += ', nothing, '
+      }
+      returnString += 'goose'
+    }
+    return returnString
+  }
   if(geese == 1 && corn == 1) return 'goose, nothing, corn'
   if(geese == 1 && corn == 2) return 'goose, nothing, corn, goose, corn, nothing, goose'
-  if(geese == 1 && corn == 3) return 'Cannot complete without loosing corn'
   if(geese == 2 && corn == 1) return 'corn, nothing, goose, corn, goose, nothing, corn'
   if((geese + corn) >= 4) return 'Cannot complete without loosing corn'
 }
