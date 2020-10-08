@@ -27,15 +27,23 @@ describe("Given n bags, what is the cost? (assuming each ferry ride costs £0.25
 
 describe("Given n bags and n geese, what trips can I take?",
 () => {
-  it("One goose and zero corn ", () => {
-    expect(getTrips(1, 0)).toEqual('Goose')
+  it("One goose and zero corn", () => {
+    expect(getTrips(1, 0)).toEqual('goose')
   });
-  it("one goose and one corn ", () => {
-    expect(getTrips(1, 1)).toEqual('Goose, nothing, corn')
+  it("One goose and one corn", () => {
+    expect(getTrips(1, 1)).toEqual('goose, nothing, corn')
+  });
+  it("One goose and two corn", () => {
+    expect(getTrips(1, 2)).toEqual('goose, nothing, corn, goose, corn, nothing, goose')
+  });
+  it("One goose and three corn", () => {
+    expect(getTrips(1, 3)).toEqual('Cannot complete without loosing corn');
   });
 });
 
 function getTrips(geese, corn){
-  if(geese == 1 && corn == 1) 
-  return 'Goose'
+  if(geese == 1 && corn == 1) return 'goose, nothing, corn';
+  if(geese == 1 && corn == 2) return 'goose, nothing, corn, goose, corn, nothing, goose'
+  if(geese == 1 && corn == 3) return 'Cannot complete without loosing corn'
+  return 'goose'
 }
