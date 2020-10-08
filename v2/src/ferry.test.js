@@ -28,42 +28,42 @@ describe("Given n bags, what is the cost? (assuming each ferry ride costs £0.25
 describe("Given n geese and n corn, what trips can I take?",
 () => {
   it("Minus one goose and zero corn", () => {
-    expect(getTrips(-1, 0)).toEqual('Values cannot be less than zero')
+    expect(getTrips(-1, 0).tripList).toEqual('Values cannot be less than zero')
   })
   it("Zero geese and minus one corn", () => {
-    expect(getTrips(0, -1)).toEqual('Values cannot be less than zero')
+    expect(getTrips(0, -1).tripList).toEqual('Values cannot be less than zero')
   })
   it("Zero geese and zero corn", () => {
-    expect(getTrips(0, 0)).toEqual('No trips required')
+    expect(getTrips(0, 0).tripList).toEqual('No trips required')
   })
   it("Zero geese and one corn", () => {
-    expect(getTrips(0, 1)).toEqual('corn')
+    expect(getTrips(0, 1).tripList).toEqual('corn')
   })
   it("Zero geese and two corn", () => {
-    expect(getTrips(0, 2)).toEqual('corn, nothing, corn')
+    expect(getTrips(0, 2).tripList).toEqual('corn, nothing, corn')
   })
   it("Zero geese and four corn", () => {
-    expect(getTrips(0, 4)).toEqual('corn, nothing, corn, nothing, corn, nothing, corn')
+    expect(getTrips(0, 4).tripList).toEqual('corn, nothing, corn, nothing, corn, nothing, corn')
   })
   it("One goose and zero corn", () => {
-    expect(getTrips(1, 0)).toEqual('goose')
+    expect(getTrips(1, 0).tripList).toEqual('goose')
   })
   it("One goose and one corn", () => {
-    expect(getTrips(1, 1)).toEqual('goose, nothing, corn')
+    expect(getTrips(1, 1).tripList).toEqual('goose, nothing, corn')
   })
   it("One goose and two corn", () => {
-    expect(getTrips(1, 2)).toEqual('goose, nothing, corn, goose, corn, nothing, goose')
+    expect(getTrips(1, 2).tripList).toEqual('goose, nothing, corn, goose, corn, nothing, goose')
   })
   it("One goose and three corn", () => {
-    expect(getTrips(1, 3)).toEqual('Cannot complete without loosing corn')
+    expect(getTrips(1, 3).tripList).toEqual('Cannot complete without loosing corn')
   })
   it("two goose and one corn", () => {
-    expect(getTrips(2, 1)).toEqual('corn, nothing, goose, corn, goose, nothing, corn')
+    expect(getTrips(2, 1).tripList).toEqual('corn, nothing, goose, corn, goose, nothing, corn')
   })
   it("two goose and one corn", () => {
-    expect(getTrips(2, 2)).toEqual('Cannot complete without loosing corn')
+    expect(getTrips(2, 2).tripList).toEqual('Cannot complete without loosing corn')
   })
   it("Four goose and zero corn", () => {
-    expect(getTrips(4, 0)).toEqual('goose, nothing, goose, nothing, goose, nothing, goose')
+    expect(getTrips(4, 0).tripList).toEqual('goose, nothing, goose, nothing, goose, nothing, goose')
   })
 })

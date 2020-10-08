@@ -11,10 +11,13 @@ function App() {
   }
   
   const TripsAnswer = ({geese, corn}) => {
+    var tripData = getTrips(geese, corn)
     return <div>
       <div>
-        <span>list of trips:</span>
-        {getTrips(geese, corn)}
+        <span>Trip cost:</span>
+        £{(tripData.trips * 0.25).toFixed(2)}<br/>
+        <span>List of trips:</span>
+        {tripData.tripList}
       </div>
     </div>
   } 
